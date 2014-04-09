@@ -73,6 +73,9 @@
         if (previousCharacterSoundex != characterSoundex && (previousCharacter != 'h' && previousCharacter != 'w') && characterSoundex != 0) {
             [soundexMutableString appendFormat:@"%d", characterSoundex];
         }
+        if ([soundexMutableString length] >= 4) {
+            break;
+        }
         previousCharacterSoundex = characterSoundex;
         previousCharacter = character;
     }
