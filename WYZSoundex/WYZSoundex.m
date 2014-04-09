@@ -12,13 +12,7 @@
 
 @interface WYZSoundex ()
 
-@property (strong, nonatomic) NSCharacterSet *soundex0CharacterSet;
-@property (strong, nonatomic) NSCharacterSet *soundex1CharacterSet;
-@property (strong, nonatomic) NSCharacterSet *soundex2CharacterSet;
-@property (strong, nonatomic) NSCharacterSet *soundex3CharacterSet;
-@property (strong, nonatomic) NSCharacterSet *soundex4CharacterSet;
-@property (strong, nonatomic) NSCharacterSet *soundex5CharacterSet;
-@property (strong, nonatomic) NSCharacterSet *soundex6CharacterSet;
+@property (strong, nonatomic) NSArray *soundexCharacterSetArray;
 
 @end
 
@@ -41,13 +35,15 @@
 - (id)initSingleton {
     self = [super init];
     if (self) {
-        self.soundex0CharacterSet = [NSCharacterSet characterSetWithCharactersInString:@"aeiouyhw"];
-        self.soundex1CharacterSet = [NSCharacterSet characterSetWithCharactersInString:@"bfpv"];
-        self.soundex2CharacterSet = [NSCharacterSet characterSetWithCharactersInString:@"cgjkqsxz"];
-        self.soundex3CharacterSet = [NSCharacterSet characterSetWithCharactersInString:@"dt"];
-        self.soundex4CharacterSet = [NSCharacterSet characterSetWithCharactersInString:@"l"];
-        self.soundex5CharacterSet = [NSCharacterSet characterSetWithCharactersInString:@"mn"];
-        self.soundex6CharacterSet = [NSCharacterSet characterSetWithCharactersInString:@"r"];
+        self.soundexCharacterSetArray = @[
+            [NSCharacterSet characterSetWithCharactersInString:@"aeiouyhw"],
+            [NSCharacterSet characterSetWithCharactersInString:@"bfpv"],
+            [NSCharacterSet characterSetWithCharactersInString:@"cgjkqsxz"],
+            [NSCharacterSet characterSetWithCharactersInString:@"dt"],
+            [NSCharacterSet characterSetWithCharactersInString:@"l"],
+            [NSCharacterSet characterSetWithCharactersInString:@"mn"],
+            [NSCharacterSet characterSetWithCharactersInString:@"r"]
+        ];
     }
     return self;
 }
@@ -66,7 +62,7 @@
     NSUInteger wordLength = [trimmedWordString length];
     unichar previousCharacter = 0;
     NSInteger previousCharacterSoundex = 0;
-    for (int i = 0; i < wordLength; i++) {
+    for (NSUInteger i = 0; i < wordLength; i++) {
         if (i == 0) {
             previousCharacter = [trimmedWordString characterAtIndex:i];
             previousCharacterSoundex = [self soundexForCharacter:previousCharacter];
@@ -85,28 +81,15 @@
 }
 
 - (NSInteger)soundexForCharacter:(unichar)character {
-    if ([self.soundex0CharacterSet characterIsMember:character]) {
-        return 0;
-    }
-    if ([self.soundex1CharacterSet characterIsMember:character]) {
-        return 1;
-    }
-    if ([self.soundex2CharacterSet characterIsMember:character]) {
-        return 2;
-    }
-    if ([self.soundex3CharacterSet characterIsMember:character]) {
-        return 3;
-    }
-    if ([self.soundex4CharacterSet characterIsMember:character]) {
-        return 4;
-    }
-    if ([self.soundex5CharacterSet characterIsMember:character]) {
-        return 5;
-    }
-    if ([self.soundex6CharacterSet characterIsMember:character]) {
-        return 6;
-    }
-    return 0;
+    __block NSInteger soundex = 0;
+    [self.soundexCharacterSetArray enumerateObjectsWithOptions:NSEnumerationConcurrent
+                                                    usingBlock:^(NSCharacterSet *characterSet, NSUInteger idx, BOOL *stop) {
+                                                        if ([characterSet characterIsMember:character]) {
+                                                            soundex = idx;
+                                                            *stop = YES;
+                                                        }
+                                                    }];
+    return soundex;
 }
 
 @end
