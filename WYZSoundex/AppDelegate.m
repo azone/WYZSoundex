@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "WYZSoundex.h"
 
 @implementation AppDelegate
 
@@ -16,6 +17,10 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    NSArray *wordsToSoundex = @[@"Robert", @"Rupert", @"Rubin", @"Ashcraft", @"Ashcroft", @"Tymczak", @"Pfister", @"Knuth", @"Kant"];
+    for (NSString *word in wordsToSoundex) {
+        NSLog(@"%@'s soundex is: %@", word, [WYZSoundex soundexForWord:word]);
+    }
     return YES;
 }
 

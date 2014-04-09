@@ -19,6 +19,7 @@
 		DD069B5A18F5803B00691154 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD069B4218F5803A00691154 /* UIKit.framework */; };
 		DD069B6218F5803B00691154 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD069B6018F5803B00691154 /* InfoPlist.strings */; };
 		DD069B6418F5803B00691154 /* WYZSoundexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD069B6318F5803B00691154 /* WYZSoundexTests.m */; };
+		DD069B6F18F5808300691154 /* WYZSoundex.m in Sources */ = {isa = PBXBuildFile; fileRef = DD069B6E18F5808300691154 /* WYZSoundex.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		DD069B5F18F5803B00691154 /* WYZSoundexTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WYZSoundexTests-Info.plist"; sourceTree = "<group>"; };
 		DD069B6118F5803B00691154 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DD069B6318F5803B00691154 /* WYZSoundexTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYZSoundexTests.m; sourceTree = "<group>"; };
+		DD069B6D18F5808300691154 /* WYZSoundex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYZSoundex.h; sourceTree = "<group>"; };
+		DD069B6E18F5808300691154 /* WYZSoundex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYZSoundex.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				DD069B4E18F5803A00691154 /* AppDelegate.m */,
 				DD069B5018F5803A00691154 /* Images.xcassets */,
 				DD069B4518F5803A00691154 /* Supporting Files */,
+				DD069B6D18F5808300691154 /* WYZSoundex.h */,
+				DD069B6E18F5808300691154 /* WYZSoundex.m */,
 			);
 			path = WYZSoundex;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD069B4F18F5803A00691154 /* AppDelegate.m in Sources */,
+				DD069B6F18F5808300691154 /* WYZSoundex.m in Sources */,
 				DD069B4B18F5803A00691154 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
