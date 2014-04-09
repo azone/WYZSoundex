@@ -1,7 +1,7 @@
 WYZSoundex
 ==========
 
-通过Soundex算法来算出英文单词的读音索引，算法描述请参见：[http://en.wikipedia.org/wiki/Soundex](http://en.wikipedia.org/wiki/Soundex)
+通过Soundex算法来算出英文单词的读音近似值索引，算法描述请参见：[http://en.wikipedia.org/wiki/Soundex](http://en.wikipedia.org/wiki/Soundex)
 
 用法：
 
